@@ -3,13 +3,6 @@
 # Import necessary libraries
 import random
 
-# Define players points
-player_one_points = 0
-player_two_points = 0
-
-# Print welcome to player/players
-print("Welcome to Tricksy Battle!")
-
 # User selects to  start new game or read the rules
 def start_game():
     print("1. Start New Game")
@@ -23,7 +16,6 @@ def start_game():
         # Call function to read the rules
     else:
         print("Invalid selection. Please try again.")
-        start_game()
 
 
 # Function to start a new game
@@ -36,28 +28,9 @@ def new_game():
 def deal_cards():
     print("Dealing cards...")
     # Create a deck of cards with the Kings removed (48 cards)
-cards = ["1♡", "2♡", "3♡", "4♡", "5♡", "6♡", "7♡", "8♡", "9♡", "10♡", "11♡", "12♡", "1♢", "2♢", "3♢", "4♢", "5♢", "6♢", "7♢", "8♢", "9♢", "10♢", "11♢", "12♢", "1♣",
-"2♣", "3♣", "4♣", "5♣", "6♣", "7♣", "8♣", "9♣", "10♣", "11♣", "12♣", "1♠", "2♠", "3♠", "4♠", "5♠", "6♠", "7♠", "8♠", "9♠", "10♠", "11♠", "12♠",]
-
-# Shuffle the deck
-random.shuffle(cards)
-
-# Deal 8 cards to each player
-player_one_hand = cards[:8]
-player_two_hand = cards[8:16]
-
-# Remove the dealt cards from the deck
-del cards[:16]
-
-# Randomly determine which player goes first
-player = ("Player 1", "Player 2")
-player_turn = random.choice(player)
-print (player_turn, "goes first.")
-
-times_happened = 0
 
 # Function to start round
-def play_round():
+def play_round(cards):
     print("Starting round...")
     # Random player chosen to go first
     if player_turn == "Player 1":
@@ -98,9 +71,6 @@ def play_round():
                 print("Player 2 wins the round!")
                 player_two_points += 1
                 player_turn = "Player 2"
-
-
-
 
 
     else: 
@@ -148,45 +118,67 @@ def play_round():
             times_happened += 1
 
 
-# If one player reaches 9 points and the other player has at least 1 point, end the game
-if player_one_points == 9 and player_two_points >= 1:
-    print("Player 1 wins! Ending the game...")
-elif player_two_points == 9 and player_one_points >= 1:
-    print("Player 2 wins! Ending the game...")
+
+    # If one player reaches 9 points and the other player has at least 1 point, end the game
+    if player_one_points == 9 and player_two_points >= 1:
+        print("Player 1 wins! Ending the game...")
+        return True
+    elif player_two_points == 9 and player_one_points >= 1:
+        print("Player 2 wins! Ending the game...")
+        return True
+    return False
+
+def main():
+    player_one_points = 0
+    player_two_points = 0
+    print("Welcome to Tricksy Battle!")
+    start_game()
+    new_game()
+    deal_cards()
+    cards = ["1♡", "2♡", "3♡", "4♡", "5♡", "6♡", "7♡", "8♡", "9♡", "10♡", "11♡", "12♡", "1♢", "2♢", "3♢", "4♢", "5♢", "6♢", "7♢", "8♢", "9♢", "10♢", "11♢", "12♢", "1♣",
+"2♣", "3♣", "4♣", "5♣", "6♣", "7♣", "8♣", "9♣", "10♣", "11♣", "12♣", "1♠", "2♠", "3♠", "4♠", "5♠", "6♠", "7♠", "8♠", "9♠", "10♠", "11♠", "12♠",]
+    random.shuffle(cards)
+    player_one_hand = cards[:8]
+    player_two_hand = cards[8:16]
+    del cards[:16]
+    player = ("Player 1", "Player 2")
+    player_turn = random.choice(player)
+    print (player_turn, "goes first.")
+    times_happened = 0
     
 
-# If the game ends 16 to 0, the player with zero points has “shot the moon”, and immediately scores 17 points
-if player_one_points == 0 and player_two_points == 16:
-    print("Player has shot the moon! Player scores 17 points.")
-    player_one_points += 17
-elif player_two_points == 0 and player_one_points == 16:
-    print("Player has shot the moon! Player scores 17 points.")
-    player_two_points += 17
+# End game after 16 rounds
+    end = False
+    for _ in range (16):
+        end = play_round(cards)
+        if end:
+            break
+
+    # If the game ends 16 to 0, the player with zero points has “shot the moon”, and immediately scores 17 points
+    if player_one_points == 0 and player_two_points == 16:
+        print("Player has shot the moon! Player scores 17 points.")
+        player_one_points += 17
+    elif player_two_points == 0 and player_one_points == 16:
+        print("Player has shot the moon! Player scores 17 points.")
+        player_two_points += 17
 
 
-# If the game ends in a tie, show final points and ask if players want to play again
-if player_one_points == player_two_points:
-    print("The game ends in a tie!")
+    # If the game ends in a tie, show final points and ask if players want to play again
+    if player_one_points == player_two_points:
+        print("The game ends in a tie!")
 
 
-# If the game ends with one player winning, show final points and ask if players want to play again
-if player_one_points > player_two_points:
-    print("Player 1 wins the game!")
-    # Show final points
-    print("Player 1 points:", player_one_points)
-    print("Player 2 points:", player_two_points)
-elif player_two_points > player_one_points:
-    print("Player 2 wins the game!")
-    # Show final points
-    print("Player 1 points:", player_one_points)
-    print("Player 2 points:", player_two_points)
-
-
-# CHECK THIS!
-end = False
-while not end:
-    play_round()
-    end = True # if game ends
+    # If the game ends with one player winning, show final points and ask if players want to play again
+    if player_one_points > player_two_points:
+        print("Player 1 wins the game!")
+        # Show final points
+        print("Player 1 points:", player_one_points)
+        print("Player 2 points:", player_two_points)
+    elif player_two_points > player_one_points:
+        print("Player 2 wins the game!")
+        # Show final points
+        print("Player 1 points:", player_one_points)
+        print("Player 2 points:", player_two_points)
 
 
 # Ask if players want to play again?
