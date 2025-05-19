@@ -1,13 +1,18 @@
 # Tricksy Battle: Card Game
 
-# Import necessary libraries
+# Inclusion of ADVANCED TOPICS: Add usage of random module
 import random
+# Inclusion of ADVANCED TOPICS: Time of steps
+import time
+# Inclusion of ADVANCED TOPICS: Use of pandas and seaborn
+import pandas as pd
+import seaborn as sns
 
 # Define variables
 player_one_points = 0
 player_two_points = 0
 cards = ["1♡", "2♡", "3♡", "4♡", "5♡", "6♡", "7♡", "8♡", "9♡", "10♡", "11♡", "12♡", "1♢", "2♢", "3♢", "4♢", "5♢", "6♢", "7♢", "8♢", "9♢", "10♢", "11♢", "12♢", "1♣",
-"2♣", "3♣", "4♣", "5♣", "6♣", "7♣", "8♣", "9♣", "10♣", "11♣", "12♣", "1♠", "2♠", "3♠", "4♠", "5♠", "6♠", "7♠", "8♠", "9♠", "10♠", "11♠", "12♠",]
+"2♣", "3♣", "4♣", "5♣", "6♣", "7♣", "8♣", "9♣", "10♣", "11♣", "12♣", "1♠", "2♠", "3♠", "4♠", "5♠", "6♠", "7♠", "8♠", "9♠", "10♠", "11♠", "12♠"]
 player = ("Player 1", "Player 2")
 times_happened = 0
 
@@ -96,6 +101,16 @@ def play_round():
                 player_two_points += 1
                 player_turn = "Player 2"
 
+        # Print the time taken for Player 1 or 2 to play
+        def time_taken():
+            start_time = time.time()
+            # Simulate the time taken for Player 1 or 2 to play
+            time.sleep(2)  # Simulate a delay of 2 seconds
+            end_time = time.time()
+            print("Time taken:", end_time - start_time, "seconds")
+        # Call the function to measure time taken
+        time_taken()
+
 
     else: 
         player_two_play = input("Player 2 select a card to play (for example, 7♣ or 11♢): ")
@@ -123,6 +138,16 @@ def play_round():
                 print("Player 2 wins the round!")
                 player_two_points += 1
                 player_turn = "Player 2"
+
+        # Print the time taken for Player 1 or 2 to play
+        def time_taken():
+            start_time = time.time()
+            # Simulate the time taken for Player 1 or 2 to play
+            time.sleep(2)  # Simulate a delay of 2 seconds
+            end_time = time.time()
+            print("Time taken:", end_time - start_time, "seconds")
+        # Call the function to measure time taken
+        time_taken()    
                 
     # Removed card from the deck
     removed_card = cards[0]
