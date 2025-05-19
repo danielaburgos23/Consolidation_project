@@ -1,4 +1,14 @@
 # Rules to Tricksy Battle: Card Game
+Created by Daniela Burgos Ortega for INST126 Final Project.
+
+How to Run Code for our Game: 
+
+    1. Make sure you have Python 3 installed.
+    2. Open a terminal in this folder.
+    3. Run the program:
+        python <file_name>
+    4. Follow the prompts in the terminal.
+
 
 How to Play Tricksy Battle:
 
@@ -18,11 +28,21 @@ How to Play Tricksy Battle:
     If at any time one player reaches 9 points and the other player has at least 1 point, the game should end, since there is no way the other player can still win.
 
 
-How to Run Code for our Game: 
+Dependencies
+To run this project with all advanced features, install the following Python packages:
+    pip install pandas seaborn
 
-    1. Make sure you have Python installed on your computer.
-    2. Save the game file.
-    3. Open your terminal or command prompt.
-    4. Navigate to the folder where your Python file is saved.
-    5. Run the game using the following command:
-        python <name of game file>
+
+Advanced Topics Included
+1. random Module
+The program uses random.choice() to randomly select elements or generate numbers to simulate unpredictable scenarios.
+2. Data Visualization with pandas and seaborn
+The project visualizes data using:
+    pandas for structuring data
+    seaborn for generating a bar chart or other plot
+3. time Module
+The program uses:
+time.sleep() to simulate loading steps or delays between actions.
+
+
+This project uses a game license. See LICENSE.txt for full details.
