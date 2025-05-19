@@ -29,20 +29,22 @@ How to Play Tricksy Battle:
 
 
 Dependencies
-To run this project with all advanced features, install the following Python packages:
-    pip install pandas seaborn
+
+    To run this project with all advanced features, install the following Python packages:
+        pip install pandas seaborn
 
 
 Advanced Topics Included
-1. random Module
-The program uses random.choice() to randomly select elements or generate numbers to simulate unpredictable scenarios.
-2. Data Visualization with pandas and seaborn
-The project visualizes data using:
-    pandas for structuring data
-    seaborn for generating a bar chart or other plot
-3. time Module
-The program uses:
-time.sleep() to simulate loading steps or delays between actions.
+
+    1. random Module
+    The program uses random.choice() to randomly select elements or generate numbers to simulate unpredictable scenarios.
+    2. Data Visualization with pandas and seaborn
+    The project visualizes data using:
+        pandas for structuring data
+        seaborn for generating a bar chart or other plot
+    3. time Module
+    The program uses:
+        time.sleep() to simulate loading steps or delays between actions.
 
 
 This project uses a game license. See LICENSE.txt for full details.
