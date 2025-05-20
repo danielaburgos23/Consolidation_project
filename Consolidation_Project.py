@@ -8,6 +8,14 @@ import time
 import pandas as pd
 import seaborn as sns
 
+
+# ------ SUGGESTIONS LIST/NOTES --------- #
+# - overall, very very nice coding. I like the logos for the cards. I used a similar approach (lists, dict, etc), except I had two lists for the Diamonds, Clubs, etc and 1,2,3...J,K
+# - I think functions are extremely efficient and keep things tidy, you understand that hence the good usage of functions
+# - I really like that you kept your game loop within a defined function. I should have done that.
+# - See line(s) for changes: 50-61, 223-235
+
+
 # Define variables
 player_one_points = 0
 player_two_points = 0
@@ -38,6 +46,20 @@ def deal_cards():
     # Create a deck of cards with the Kings removed (48 cards)
 cards = ["1♡", "2♡", "3♡", "4♡", "5♡", "6♡", "7♡", "8♡", "9♡", "10♡", "11♡", "12♡", "1♢", "2♢", "3♢", "4♢", "5♢", "6♢", "7♢", "8♢", "9♢", "10♢", "11♢", "12♢", "1♣",
 "2♣", "3♣", "4♣", "5♣", "6♣", "7♣", "8♣", "9♣", "10♣", "11♣", "12♣", "1♠", "2♠", "3♠", "4♠", "5♠", "6♠", "7♠", "8♠", "9♠", "10♠", "11♠", "12♠",]
+
+# ------- START OF SUGGESTION -------- #
+# - contents: created a function to print the players' scores after each round
+
+# - I had to nitpick in order to make at least one change lol
+
+# display_scores() function to callback and elimate clutter
+# def display_scores(p1_points, p2_points):
+    # print("Current Scores:")
+    # print("Player 1:", p1_points)
+    # print("Player 2:", p2_points)
+
+# ------- END OF SUGGESTION -------- #
+
 
 # Shuffle the deck
 random.shuffle(cards)
@@ -198,10 +220,21 @@ while not end:
         end = True
         print("Game over! Ending the game...")
 
+# -------- START OF SUGGESTION --------- #
+
 # Print final points and establish winner.
 print("Final points:")
-print("Player 1 points:", player_one_points)
-print("Player 2 points:", player_two_points)
+
+# - I would delete these tagged lines if you accept my commit because of the function I made
+# print("Player 1 points:", player_one_points)
+# print("Player 2 points:", player_two_points)
+
+# - those #tagged lines would then be replaced with: 
+# ~~~~ display_scores(player_one_points, player_two_points)
+
+# -------- END OF SUGGESTION --------- #
+
+
 if player_one_points > player_two_points:
     print("Player 1 wins the game!")
 elif player_two_points > player_one_points:
